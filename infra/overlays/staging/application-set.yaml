@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: git@github.com:ruslanguns/application-sets.git
+        repoURL: https://github.com/ruslanguns/application-sets.git
         revision: HEAD
         directories:
           - path: overlays/staging/*
@@ -16,7 +16,7 @@ spec:
     spec:
       project: acme-staging
       source:
-        repoURL: git@github.com:ruslanguns/application-sets.git
+        repoURL: https://github.com/ruslanguns/application-sets.git
         targetRevision: HEAD
         path: "{{path}}"
       destination:
