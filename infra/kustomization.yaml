@@ -6,3 +6,4 @@ resources:
   - overlays/staging
   - overlays/prod
   - sealed-secrets
+  - gatekeeper-system
