@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prod-application-set
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/ruslanguns/application-sets.git
+        revision: HEAD
+        directories:
+          - path: overlays/prod/*
+  template:
+    metadata:
+      name: "acme-prod-{{path.basename}}"
+    spec:
+      project: acme-prod
+      source:
+        repoURL: https://github.com/ruslanguns/application-sets.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "acme-prod"

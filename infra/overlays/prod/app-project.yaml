@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: acme-prod
+  namespace: argocd
+spec:
+  description: Acme prod Project
+  destinations:
+    - namespace: acme-prod
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/ruslanguns/application-sets.git
