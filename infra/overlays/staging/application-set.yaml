@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: staging-application-set
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: git@github.com:ruslanguns/application-sets.git
+        revision: HEAD
+        directories:
+          - path: overlays/staging/*
+  template:
+    metadata:
+      name: "acme-staging-{{path.basename}}"
+    spec:
+      project: acme-staging
+      source:
+        repoURL: git@github.com:ruslanguns/application-sets.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "acme-staging"
