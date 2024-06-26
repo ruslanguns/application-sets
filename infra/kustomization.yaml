@@ -3,3 +3,6 @@ kind: Kustomization
 
 resources:
   - argocd
+  - overlays/staging
+  - overlays/prod
+  - sealed-secrets
